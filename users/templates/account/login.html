@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% load socialaccount %}
+{% providers_media_js %}
 
 {% block content %}
 <div class="container">
@@ -41,7 +42,9 @@
                 <div class="text-center mb-3">
                 <p>Sign in with:</p>
                 <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
+                    <a href="{% provider_login_url 'facebook' %}">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
                 </button>
         
                 <button type="button" class="btn btn-secondary btn-floating mx-1">
