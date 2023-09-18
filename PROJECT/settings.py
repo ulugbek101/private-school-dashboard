@@ -43,13 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users',
+    'social_django',
 
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook',
+    # 'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'allauth.account.middleware.AccountMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'PROJECT.urls'
@@ -77,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
@@ -138,40 +141,56 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {'access_type': 'online'}
-    },
-    'facebook': {
-        'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
-        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'first_name',
-            'last_name',
-            'middle_name',
-            'name',
-            'name_format',
-            'picture',
-            'short_name'
-        ],
-        'EXCHANGE_TOKEN': True,
-        # 'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v13.0',
-        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+    # 'google': {
+    #     'SCOPE': [
+    #         'profile',
+    #         'email',
+    #     ],
+    #     'AUTH_PARAMS': {'access_type': 'online'}
+    # },
+    # 'facebook': {
+    #     'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
+    #     # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+    #     'SCOPE': ['email', 'public_profile'],
+    #     'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+    #     'INIT_PARAMS': {'cookie': True},
+    #     'FIELDS': [
+    #         'id',
+    #         'first_name',
+    #         'last_name',
+    #         'middle_name',
+    #         'name',
+    #         'name_format',
+    #         'picture',
+    #         'short_name'
+    #     ],
+    #     'EXCHANGE_TOKEN': True,
+    #     # 'LOCALE_FUNC': 'path.to.callable',
+    #     'VERIFIED_EMAIL': False,
+    #     'VERSION': 'v13.0',
+    #     'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+    # }
+# }
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    # 'social_core.backends.facebook.FacebookOAuth2',
 )
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# SOCIAL_AUTH_FACEBOOK_KEY = '271115675387742'
+# SOCIAL_AUTH_FACEBOOK_SECRET = 'b67807b601b4716df8629144c7efd430'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '550413633175-l5lh47ein46aamrge87851eg1m8il7it.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+SOCIAL_AUTH_GITHUB_KEY = '808054975b8ae9b0f02b'
+SOCIAL_AUTH_GITHUB_SECRET = '771a25d79dbcfa42d2e002e500907ac078ee7fb0'
+
+# SOCIAL_AUTH_FACEBOOK_SCOPE = [
+#     'email',
+# ]
