@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+<div class="container flex flex-column align-items-center mt-5">
+    <h1 class="text-center">{% blocktrans with provider.name as provider %}Sign In Via {{ provider }}{% endblocktrans %}</h1>
+
+    <p class="text-center">{% blocktrans with provider.name as provider %}You are about to sign in using a third party account from {{ provider }}.{% endblocktrans %}</p>
+    
+    
+    <form method="post" class="d-flex justify-content-center gap-2">
+      {% csrf_token %}
+
+      <a href="{% url 'account_login' %}" class="btn btn-outline-black">Back</a>
+      <button type="submit" class="btn btn-primary">{% trans "Continue" %}</button>
+      
+    </form>
+</div>
+{% endblock %}
