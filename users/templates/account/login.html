@@ -38,52 +38,9 @@
             role="tabpanel"
             aria-labelledby="tab-login"
             >
-            <form>
-                <div class="text-center mb-3">
-                <p>Sign in with:</p>
-                <!-- <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <a href="{% url 'social:begin' 'facebook' %}">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </button> -->
-        
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <a href="{% url 'social:begin' 'google-oauth2' %}">
-                        <i class="fab fa-google"></i>
-                    </a>
-                </button>
-        
-                <!-- <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                </button> -->
-        
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <a href="{% url 'social:begin' 'github' %}">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </button>
-                </div>
-        
-                <p class="text-center">or:</p>
-        
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                <input type="email" id="loginName" class="form-control" />
-                <label class="form-label" for="loginName">Email or username</label>
-                </div>
-        
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                <input type="password" id="loginPassword" class="form-control" />
-                <label class="form-label" for="loginPassword">Password</label>
-                </div>
-        
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                Sign in
-                </button>
-        
-            </form>
+
+            {% include 'components/_signin_form.html' %}
+
             </div>
             <div
             class="tab-pane fade"
@@ -91,86 +48,12 @@
             role="tabpanel"
             aria-labelledby="tab-register"
             >
-            <form>
-                <div class="text-center mb-3">
-                <p>Sign up with:</p>
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                </button>
-        
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                </button>
-        
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                </button>
-        
-                <button type="button" class="btn btn-secondary btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                </button>
-                </div>
-        
-                <p class="text-center">or:</p>
-        
-                <!-- Name input -->
-                <div class="form-outline mb-4">
-                <input type="text" id="registerName" class="form-control" />
-                <label class="form-label" for="registerName">Name</label>
-                </div>
-        
-                <!-- Username input -->
-                <div class="form-outline mb-4">
-                <input type="text" id="registerUsername" class="form-control" />
-                <label class="form-label" for="registerUsername">Username</label>
-                </div>
-        
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                <input type="email" id="registerEmail" class="form-control" />
-                <label class="form-label" for="registerEmail">Email</label>
-                </div>
-        
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                <input type="password" id="registerPassword" class="form-control" />
-                <label class="form-label" for="registerPassword">Password</label>
-                </div>
-        
-                <!-- Repeat Password input -->
-                <div class="form-outline mb-4">
-                <input
-                    type="password"
-                    id="registerRepeatPassword"
-                    class="form-control"
-                />
-                <label class="form-label" for="registerRepeatPassword"
-                    >Repeat password</label
-                >
-                </div>
-        
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                <input
-                    class="form-check-input me-2"
-                    type="checkbox"
-                    value=""
-                    id="registerCheck"
-                    checked
-                    aria-describedby="registerCheckHelpText"
-                />
-                <label class="form-check-label" for="registerCheck">
-                    I have read and agree to the terms
-                </label>
-                </div>
-        
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-3">
-                Sign in
-                </button>
-            </form>
+
+            {% include 'components/_signup_form.html' %}
+
             </div>
         </div>
     </div>
 </div>
+
 {% endblock content %}
