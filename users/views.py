@@ -10,6 +10,7 @@ def index(request):
     else:
         return HttpResponse(f'You are logged in as {request.user.email}, to logout press <a href="logout">Logout</a>')
 
+
 def logout_view(request):
     logout(request)
     return redirect('/')
