@@ -8,10 +8,7 @@ User = get_user_model()
 
 @login_required(login_url='account_login')
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect('account_login')
-    else:
-        return HttpResponse(f'You are logged in as {request.user.email}, to logout press <a href="logout">Logout</a>')
+    return render(request, 'app_main/index.html')
 
 
 def logout_view(request):

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'users',
+    'app_users.apps.AppUsersConfig',
+    'app_main.apps.AppMainConfig',
     'social_django',
 
     'django.contrib.sites',
@@ -188,7 +189,7 @@ AUTHENTICATION_BACKENDS = (
 )
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'app_users.User'
 
 # SOCIAL_AUTH_FACEBOOK_KEY = '271115675387742'
 # SOCIAL_AUTH_FACEBOOK_SECRET = 'b67807b601b4716df8629144c7efd430'
